@@ -4,6 +4,31 @@
 
 let testWord = "esternocleidomastoideo";
 function wordCutter(word) {
+
+    const indexs = [];
+    for (let i = 0; i < word.length; i++) {
+    let isHere = true
+
+    while (isHere) {
+
+        let indice = Math.random()*(word.length-1);
+        let indiceRandom = Math.floor(indice);
+
+        if (indexs.includes(indiceRandom)){
+
+            indice = Math.random()*(word.length-1);
+            indiceRandom = Math.floor(indice);
+
+        } else {
+
+            indexs.push(indiceRandom);
+            isHere = false;
+        }
+    } 
+
+    console.log(word[indexs[i]])
+    
+}
    // :)
 }
 wordCutter(testWord);
@@ -25,10 +50,21 @@ let testWordsList = [
     "Meneo",
 ];
 
-// pruebe para cada palabra A, B y C
-function wordSearcherIgnoreCase(targetWord, wordsList) {
-   // :)
+function wordSearcherIgnoreCase (targetWord, wordsList){
+
+    let palabra = [];
+    wordsList.forEach( (elemento) => palabra.push(elemento.toUpperCase()));
+    targetWord.toUpperCase()
+    let found = palabra.find(element => element === targetWord);
+
+
+    return found
 }
+
+console.log(wordSearcherIgnoreCase(testTargetWordA, testWordsList));
+
+// pruebe para cada palabra A, B y C
+
 
 
 
@@ -49,8 +85,23 @@ let testSampleList = [
 ];
 
 function wordLengthClassifier(wordsList) {
-    // :)
+    
+    /*let longestWord = wordsList[0];
+
+    for (let i = 0; i < wordsList.length; i++) {
+        if ( wordsList[i].length > wordsList [i+1].length ) { 
+
+            longestWord = wordsList [i];
+
+        }
+        
+    }
+
+    return longestWord*/
+
 }
+
+console.log(wordLengthClassifier(testSampleList))
 
 
 /*Dado un string retorna si este es o no un palíndromo. No debe diferenciar entre mayúsculas y minúsculas*/
