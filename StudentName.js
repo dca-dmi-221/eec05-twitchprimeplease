@@ -27,7 +27,7 @@ function wordCutter(word) {
     } 
 
     console.log(word[indexs[i]])
-    
+
 }
    // :)
 }
@@ -50,7 +50,7 @@ let testWordsList = [
     "Meneo",
 ];
 
-function wordSearcherIgnoreCase (targetWord, wordsList){
+function wordSearcherIgnoreCase (targetWord){
 
     let palabra = [];
     wordsList.forEach( (elemento) => palabra.push(elemento.toUpperCase()));
