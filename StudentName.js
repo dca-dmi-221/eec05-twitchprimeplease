@@ -92,19 +92,31 @@ let testSampleList = [
 ];
 
 function wordLengthClassifier(wordsList) {
-    
-    /*let longestWord = wordsList[0];
+    totalLetters = 0;
+    let sortedWords = wordsList.sort((wordA,wordB) => {
 
-    for (let i = 0; i < wordsList.length; i++) {
-        if ( wordsList[i].length > wordsList [i+1].length ) { 
+        if (wordA.length < wordB.length){
+            return -1
+        } else if (wordA.length > wordB.length) {
 
-            longestWord = wordsList [i];
-
+            return 1
+            
+        } else {
+            return 0
         }
-        
-    }
 
-    return longestWord*/
+    })
+
+    sortedWords.forEach(word => totalLetters += word.length);
+    let promedio = totalLetters/sortedWords.length;
+
+    return {
+
+        palabraMasCorta: sortedWords [0],
+        palabraMasLarga: sortedWords [sortedWords. length - 1],
+        promedio
+
+    }
 
 }
 
@@ -183,6 +195,16 @@ let testWordToExplore = "amar";
 let wordsToVerify = ["amar", "arma", "rana" , "mara", "rama", "roma", "amor", "ramon", "omar"];
 
 function anagramVerifier(wordToExplore, listOfWords) {
+
+    result = []
+
+    listOfWords.forEach((palabra, index) => {
+
+        if(palabra.split("").every(letra => {
+            return wordToExplore.includes (letra);
+        })) result.push(index)
+
+    })
    // :)
 }
 
@@ -195,6 +217,28 @@ let testObjMultiContainer = {
 };
 
 function vocalsRemoverFromObject(objectMultiContainer) {
+    
+    let lista = objectMultiContainer.listA.concat(objectMultiContainer.listB);
+    
+
+    lista.forEach(palabra => {
+        let palActual = []
+        let result = []
+        palabra.split('').forEach(letra => {
+            if (letra !== 'a'||
+            letra !=='e'||
+            letra !=='i'|| 
+            letra !== 'o'|| 
+            letra !=='u'){
+                palActual.push(letra);
+            } 
+            
+        }) 
+        result.push(palActual.join(''))
+        
+    }) 
+    return {result}
+
     // :)
 }
 
@@ -205,6 +249,7 @@ console.log(vocalsRemoverFromObject(testObjMultiContainer));
 let someWordsToTest = ["compañeros", "estudiantes", "señores", "amigos", "graduandos", "artistas", "universitarios"];
 
 function lastVocalReplacer(words) {
+
     // :)
 }
 
