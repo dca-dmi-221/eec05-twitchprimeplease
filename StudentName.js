@@ -139,11 +139,15 @@ let containerTestObject = {
 function lettersCounter(objectContainer) {
 
     let vocales = 0;
-    let conso = 1;
+    let conso = 0;
 
     objectContainer.list.forEach(palabra => {
-        palabra.split("").forEach(letra => {
-            if (letra === 'a'|| 'e'||'i'|| 'o'|| 'u'){
+        palabra.split('').forEach(letra => {
+            if (letra === 'a'||
+            letra ==='e'||
+            letra ==='i'|| 
+            letra === 'o'|| 
+            letra ==='u'){
                 vocales++
             } else {
                 conso++
