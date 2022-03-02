@@ -50,15 +50,22 @@ let testWordsList = [
     "Meneo",
 ];
 
-function wordSearcherIgnoreCase (targetWord){
+function normalizedWord (word){
+    return word.normalized('NFD').replace(/[\u0300 - \u036f]/g, "").toLowerCase().replace("0","o")
+}
 
-    let palabra = [];
-    wordsList.forEach( (elemento) => palabra.push(elemento.toUpperCase()));
-    targetWord.toUpperCase()
-    let found = palabra.find(element => element === targetWord);
+function wordSearcherIgnoreCase (targetWord, wordsList){
 
+    let currentWord = word
+    let normalized = normalizedWord(currentWord);
+    const normalizedList = [];
 
-    return found
+    for (let i = 0; i < wordsList.length; i++) {
+        normalizedList.push(normalized(wordsList[i]))
+        
+    }
+    console.log(normalizedList.includes(normalized))
+    
 }
 
 console.log(wordSearcherIgnoreCase(testTargetWordA, testWordsList));
@@ -112,6 +119,14 @@ let onVerificationWordC = "Gomosos";
 let onVerificationWordD = "Somos";
 
 function palindromeVerifier(word) {
+    let palindomeWord = word.toLowerCase.split("").reverse.join("")
+    if (palindomeWord === word.toLowerCase()){
+
+        console.log(word + "es palindroma")
+
+    } else {
+        console.log(word + " no es palindroma")
+    }
    // :)
 }
 
@@ -122,17 +137,39 @@ let containerTestObject = {
     list:["Cumbamba", "Oreja", "Nariz", "Ojo", "Lengua", "Diente"]
 }
 function lettersCounter(objectContainer) {
+
+    let vocales = 0;
+    let conso = 1;
+
+    objectContainer.list.forEach(palabra => {
+        palabra.split("").forEach(letra => {
+            if (letra === 'a'|| 'e'||'i'|| 'o'|| 'u'){
+                vocales++
+            } else {
+                conso++
+            }
+            
+        })
+        
+    })
    // :)
+    return [vocales,conso] 
 }
 
+console.log(lettersCounter(containerTestObject))
 
 /*Dado 2 arreglos de strings retornar un arreglo con todos los strings.*/
 let wordArrayA = ["hola", "¿" ,"cómo", "estás", "?"];
 let wordArrayB = ["te", "ves" ,"igual", "te", "ves", "igual"];
 
 function arrayJoiner(listA, listB) {
+
+    newArray = [...listA, ...listB];
+    return newArray
  // :)
 }
+
+console.log(arrayJoiner(wordArrayA,wordArrayB));
 
 
 /*Dado un arreglo de strings indicar qué posiciones del arreglo
