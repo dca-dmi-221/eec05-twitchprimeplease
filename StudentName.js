@@ -249,10 +249,29 @@ console.log(vocalsRemoverFromObject(testObjMultiContainer));
 let someWordsToTest = ["compañeros", "estudiantes", "señores", "amigos", "graduandos", "artistas", "universitarios"];
 
 function lastVocalReplacer(words) {
-
+    const replacedArray = words.map(word => {
+        let replacedWord;
+        for(let i = word.length - 1; i >= 0; i--) {
+            const letter = word.charAt(i);
+            if(
+                letter === 'a'||
+                letter ==='e'||
+                letter ==='i'|| 
+                letter === 'o'|| 
+                letter ==='u'
+            ) {
+                //console.log(word.charAt(i))
+                replacedWord = word.substring(0, i) + 'X' +  word.substring(i+1 , word.length );
+                break;
+            }
+        }
+        return replacedWord;
+    })
+    return replacedArray;
     // :)
 }
 
+console.log(lastVocalReplacer(someWordsToTest));
 
 /*Dada una lista de palabras verificar si alguna de las palabras es la
 versión al revés de alguna de las palabras de una segunda lista,
@@ -263,5 +282,30 @@ let testListA = ["amor", "sabor", "calor","firma", "mara"];
 let testListB = ["roma", "robar", "portar", "arma", "mora"];
 
 function doubleListVerifier(listA, listB) {
+    
+
+    let doubleNumber = 0;
+
+    let newB = listB.forEach(palabra =>{
+        palabra.split().reverse().join('');
+
+    })
+        console.log(palabra)
+        
+        for (let i = 0; i < listA.length; i++) {
+            
+            if (newB == listA){
+
+                doubleNumber++;
+
+            }return doubleNumber;
+            
+        }
+
+        return {doubleNumber}
+
+    
     // :)
 }
+
+console.log(doubleListVerifier(testListA,testListB));
