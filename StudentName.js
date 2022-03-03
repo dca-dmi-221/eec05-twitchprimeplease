@@ -282,30 +282,31 @@ let testListA = ["amor", "sabor", "calor","firma", "mara"];
 let testListB = ["roma", "robar", "portar", "arma", "mora"];
 
 function doubleListVerifier(listA, listB) {
-    
+
 
     let doubleNumber = 0;
+    let newB=[];
 
-    let newB = listB.forEach(palabra =>{
-        palabra.split().reverse().join('');
+    for (let i = 0; i < listB.length; i++) {
 
-    })
-        console.log(palabra)
-        
-        for (let i = 0; i < listA.length; i++) {
-            
-            if (newB == listA){
+        newB[i]=listB[i].split("").reverse().join("");
+
+    }
+
+    for (let i = 0; i < listA.length; i++) {
+        for(let j = 0; j < newB.length; j++){
+            if (newB[j] == listA[i]){
 
                 doubleNumber++;
 
             }return doubleNumber;
-            
         }
+    }
 
-        return {doubleNumber}
+    return {doubleNumber}
 
-    
-    // :)
+
+    //:)
 }
 
 console.log(doubleListVerifier(testListA,testListB));
